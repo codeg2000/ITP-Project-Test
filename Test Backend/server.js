@@ -32,3 +32,9 @@ mongoose.connect(ATLAS_URL,{
 app.listen(PORT, () => {
     console.log(`Server is up and running on port no: ${PORT}`);
 });
+
+const postRoutes = require('./routes/items');
+const CategoryRoute = require('./routes/Categories');
+
+app.use(postRoutes);
+app.use(CategoryRoute);

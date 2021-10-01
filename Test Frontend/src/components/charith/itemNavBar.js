@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-class  NavBar extends Component {
+class  itemNavBar extends Component {
     render() {
         return (
           <div class="topnav">
-          <a class="active" href="/">Stock Management</a>
-          <a href="/">Dashboard</a>
-          <a href="/add">Add New Stock</a>
           <a class="active" href="/item">Dashboard</a>
           <a href="/item/add_item">Add Item</a>
           <a href="/item/categories">Categories</a>
@@ -16,5 +13,6 @@ class  NavBar extends Component {
     }
 }
 
-export default NavBar;
+export default itemNavBar;
+
 

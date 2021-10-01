@@ -1,0 +1,68 @@
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .topic {
+      text-align: center;
+
+  }
+
+  .bg {
+      background-image: url("../Images/bg.png");
+     }
+
+  .container1{
+            background-color: rgba(255, 0, 0, 0);
+            width: 100%;
+            height: 700px;
+            }
+
+  .additm {
+    background-color:lightseagreen;
+    padding: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+  }         
+  
+  .search{
+    margin-left: 1035px;
+    border-radius: 10px;
+    padding-top: 10px;
+    width: 20%;
+  }
+
+  .ui2{
+
+    background-color: #F0F8FF;
+  
+    padding: 30px;
+    margin-top: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border-radius: 10px;
+  
+  }
