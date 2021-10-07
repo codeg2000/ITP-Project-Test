@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'; 
-import cNavBar from './itemNavBar';
 
 class Home extends Component {
 constructor(props){
@@ -71,10 +70,13 @@ handleSearchArea = (e) =>{
 
   render() {
     return (
-      <div>
-        <cNavBar/>
-
       <div className="container1">
+        <div class="topnav">
+                    <a class="active" href="/item">Dashboard</a>
+                    <a href="/item/add_item">Add Item</a>
+                    <a href="/item/categories">Categories</a>
+                    <a href="/item/add_category">Add Category</a>
+                </div>
         <div className= "search"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={this.handleSearchArea}></input></div>
         <br/>
         <h2 className="topic">All Items </h2>
@@ -125,7 +127,6 @@ handleSearchArea = (e) =>{
         <button type="button" class="btn btn-primary"> <a href="/item/genrep" style={{textDecoration: "none", color:"white"}}> Generate Report</a></button>
         
        
-      </div>
       </div>
     );
   }

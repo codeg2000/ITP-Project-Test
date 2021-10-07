@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import cNavBar from './itemNavBar';
 
 class AddCategory extends Component {
 
@@ -50,9 +49,13 @@ class AddCategory extends Component {
 
     render() {
         return (
-            <div> 
-                <cNavBar/>
             <div className="container1">
+                <div class="topnav">
+                    <a class="active" href="/item">Dashboard</a>
+                    <a href="/item/add_item">Add Item</a>
+                    <a href="/item/categories">Categories</a>
+                    <a href="/item/add_category">Add Category</a>
+                </div>
             <div className="col-md-8 mt-4 mx-auto">
             <h2 className="h3 mb-3 font-weight-normal text-center">Add New Category</h2>
             <div className="additm">
@@ -86,7 +89,7 @@ class AddCategory extends Component {
             </div>
             </div>
             </div>
-            </div>
+           
         );
     }
 }

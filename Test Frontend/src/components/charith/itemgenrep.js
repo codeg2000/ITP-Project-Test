@@ -37,10 +37,13 @@ retrieveItems(){
 
   render() {
     return (
-      <div>
-        <cNavBar/>
-
       <div className="container1">
+        <div class="topnav">
+                    <a class="active" href="/item">Dashboard</a>
+                    <a href="/item/add_item">Add Item</a>
+                    <a href="/item/categories">Categories</a>
+                    <a href="/item/add_category">Add Category</a>
+                </div>
           <br/>
           <h2>Do you want to get a report? </h2>
           <br/>
@@ -100,7 +103,6 @@ retrieveItems(){
         
         
        
-      </div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react"
 import axios from "axios";
-import cNavBar from './itemNavBar';
+
 
 
 export default function AddItem(){
@@ -51,9 +51,13 @@ export default function AddItem(){
 
 
     return(
-            <div>
-              <cNavBar/>
             <div className="container1">
+              <div class="topnav">
+                    <a class="active" href="/item">Dashboard</a>
+                    <a href="/item/add_item">Add Item</a>
+                    <a href="/item/categories">Categories</a>
+                    <a href="/item/add_category">Add Category</a>
+                </div>
             <div className="col-md-8 mt-4 mx-auto">
             <h2 className="h3 mb-3 font-weight-normal text-center">Add New Item</h2>
             <div className="additm">
@@ -136,6 +140,6 @@ export default function AddItem(){
             </div>
             </div>
         </div>
-        </div>
+        
     )
 }

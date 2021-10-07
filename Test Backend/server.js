@@ -7,13 +7,27 @@ const app = express();
 
 //import routes
 const stockRoutes = require('./routes/stocks');
+const postRoutes = require('./routes/items');
+const CategoryRoute = require('./routes/Categories');
+const employeeRouter = require('./routes/employees.js');
+const postRouter = require('./routes/EmpLeaves.js');
+
+
 
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
 
+
+
 //route middleware
 app.use(stockRoutes);
+app.use(postRoutes);
+app.use(CategoryRoute);
+app.use(employeeRouter);
+app.use(postRouter);
+
+
 
 const PORT = 8000;
 const ATLAS_URL= 'mongodb+srv://gishanUser:celetron123@itpproject.pg20h.mongodb.net/stock_db?retryWrites=true&w=majority';
@@ -33,8 +47,5 @@ app.listen(PORT, () => {
     console.log(`Server is up and running on port no: ${PORT}`);
 });
 
-const postRoutes = require('./routes/items');
-const CategoryRoute = require('./routes/Categories');
 
-app.use(postRoutes);
-app.use(CategoryRoute);
+

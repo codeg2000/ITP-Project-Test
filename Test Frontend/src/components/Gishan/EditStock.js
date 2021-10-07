@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import {setErrors} from "./setErrors"
+import React, {Component} from 'react'
+import axios from 'axios';
 
-class AddStock extends Component {
+class EditStock extends Component {
 
     constructor(props){
         super(props);
@@ -12,9 +11,10 @@ class AddStock extends Component {
             Stock_Quantity :"",
             Supplier_Name :"",
             Supplier_Email :"",
-            Supplier_ContactNo :"",
-            errors:{}
-        };
+            Supplier_ContactNo :""
+            
+
+        }
     }
 
     handleInputChange= (e)=>{
@@ -26,57 +26,78 @@ class AddStock extends Component {
         })
     }
 
-    validate=(Stock_ID, Supplier_Email, Supplier_ContactNo)=>{
-      const errors = setErrors(Stock_ID, Supplier_Email, Supplier_ContactNo);
-      this.setState({errors:errors});
-      return Object.values(errors).every((err)=>err==="");
-    };
-
-    onSubmit = (e) =>{
+    onSubmit = (e)=>{
+        
         e.preventDefault();
 
         const id = this.props.match.params.id;
 
         const {Stock_ID,Stock_Name,Stock_Quantity,Supplier_Name,Supplier_Email,Supplier_ContactNo} = this.state;
-        if (this.validate(Stock_ID, Supplier_Email, Supplier_ContactNo)) {
-            const data ={
 
-                Stock_ID:Stock_ID,
-                Stock_Name:Stock_Name,
-                Stock_Quantity:Stock_Quantity,
-                Supplier_Name:Supplier_Name,
-                Supplier_Email:Supplier_Email,
-                Supplier_ContactNo:Supplier_ContactNo
-                
-            };
-    
-            console.log(data)
-    
-            axios.post(`http://localhost:8000/stock/add`,data).then((res) =>{
-                if(res.data.success){
-                    alert("Stock added Successfully")
-                    this.setState(
-                        {
-                            Stock_ID :"",
-                            Stock_Name :"",
-                            Stock_Quantity :"",
-                            Supplier_Name :"",
-                            Supplier_Email :"",
-                            Supplier_ContactNo :""
-                        }
-                    )
-                }
-            })  
-        }
-        
+        const data ={
+
+            Stock_ID:Stock_ID,
+            Stock_Name:Stock_Name,
+            Stock_Quantity:Stock_Quantity,
+            Supplier_Name:Supplier_Name,
+            Supplier_Email:Supplier_Email,
+            Supplier_ContactNo:Supplier_ContactNo
+            
+        };
+
+        console.log(data)
+
+        axios.put(`http://localhost:8000/stock/update/${id}`,data).then((res)=>{
+            if(res.data.success){
+                alert("Stock Updated successfully")
+                this.setState(
+                    {
+                        Stock_ID :"",
+                        Stock_Name :"",
+                        Stock_Quantity :"",
+                        Supplier_Name :"",
+                        Supplier_Email :"",
+                        Supplier_ContactNo :""
+                        
+                    }
+                )
+            }
+        })  
     }
+
+
+    componentDidMount(){
+        const id = this.props.match.params.id;
+    
+        axios.get(`http://localhost:8000/stock/${id}`).then((res)=>{
+            if(res.data.success){
+                this.setState({
+                    Stock_ID:res.data.stock.Stock_ID,
+                    Stock_Name:res.data.stock.StockName,
+                    Stock_Quantity:res.data.stock.Stock_Quantity,
+                    Supplier_Name:res.data.stock.Supplier_Name,
+                    Supplier_Email:res.data.stock.Supplier_Email,
+                    Supplier_ContactNo:res.data.stock.Supplier_ContactNo
+
+                });
+    
+                console.log(this.state.stock);
+            }
+        });
+    }
+    
+
 
 
     render() {
         return (
             <div className="container1">
+                <div class="topnav">                
+                    <a href="/stocks">Dashboard</a>
+                    <a href="/stocks/add">Add New Stock</a>
+                </div>
             <div className="col-md-8 mt-4 mx-auto">
-            <h2 className="h3 mb-3 font-weight-normal text-center">Add New Stock</h2>
+            <h2 className="h3 mb-3 font-weight-normal text-center">Edit Stock</h2>
             <div className="Addui">
             <form onSubmit={this.onSubmit}>
 
@@ -87,11 +108,7 @@ class AddStock extends Component {
                 name="Stock_ID"
                 placeholder="Enter Stock_ID"
                 value={this.state.Stock_ID}
-                onChange={this.handleInputChange}
-                />
-                {this.state.errors.Stock_ID && (
-                    <div className="text-danger">{this.state.errors.Stock_ID}</div>
-                )}
+                onChange={this.handleInputChange} />
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
@@ -114,7 +131,7 @@ class AddStock extends Component {
                 onChange={this.handleInputChange} />
             </div>
 
-            <div className="form-group" style={{marginBottom:'15px'}}>
+<div className="form-group" style={{marginBottom:'15px'}}>
                 <label className="form-label" style={{marginBottom:'5px'}}> Supplier Name </label>
                 <input type="text" 
                 className="form-control"
@@ -129,13 +146,9 @@ class AddStock extends Component {
                 <input type="text" 
                 className="form-control"
                 name="Supplier_Email"
-                placeholder="Enter Supplier_Email"
+                placeholder="Enter Supplier Email"
                 value={this.state.Supplier_Email}
-                onChange={this.handleInputChange} 
-                />
-                {this.state.errors.Supplier_Email && (
-                    <div className="text-danger">{this.state.errors.Supplier_Email}</div>
-                )}
+                onChange={this.handleInputChange} />
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
@@ -145,16 +158,12 @@ class AddStock extends Component {
                 name="Supplier_ContactNo"
                 placeholder="Enter Supplier_ContactNo"
                 value={this.state.Supplier_ContactNo}
-                onChange={this.handleInputChange} 
-                />
-                {this.state.errors.Supplier_ContactNo && (
-                    <div className="text-danger">{this.state.errors.Supplier_ContactNo}</div>
-                )}
+                onChange={this.handleInputChange} />
             </div>
 
-            <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
-                <i className="far fa-check-square"></i>
-                &nbsp; Save
+            <button type="submit" className="btn btn-success" style={{marginTop:'15px'}} >
+            <i className="far fa-check-square"></i>
+            &nbsp; Update
             </button>
             </form>
             </div>
@@ -164,4 +173,4 @@ class AddStock extends Component {
     }
 }
 
-export default AddStock;
+export default EditStock;

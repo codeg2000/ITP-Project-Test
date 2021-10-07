@@ -69,6 +69,10 @@ handleSearchArea = (e) =>{
   render() {
     return (
       <div className="container1">
+        <div class="topnav">
+                    <a href="/stocks">Dashboard</a>
+                    <a href="/stocks/add">Add New Stock</a>
+        </div>
         <div className="ss"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={this.handleSearchArea}></input></div>
         <h2><center>All Stock Details</center></h2>
         <table className="table table-success table-striped" style={{marginTop:'40px'}}>
@@ -89,7 +93,7 @@ handleSearchArea = (e) =>{
               <tr key={index}>
                 <th scope="row">{index+1}</th>
                 <td>
-                    <a href={`/stock/${stocks._id}`} style={{textDecoration:'none'}}>
+                    <a href={`/stocks/stock/${stocks._id}`} style={{textDecoration:'none'}}>
                     {stocks.Stock_ID}
                     </a>
                 </td>
@@ -99,7 +103,7 @@ handleSearchArea = (e) =>{
                 <td>{stocks.Supplier_Email}</td>
                 <td>{stocks.Supplier_ContactNo}</td>
                 <td>
-                  <a className="btn btn-warning" href={`/edit/${stocks._id}`}>
+                  <a className="btn btn-warning" href={`/stocks/edit/${stocks._id}`}>
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </a>
                   &nbsp;
@@ -114,7 +118,7 @@ handleSearchArea = (e) =>{
           </tbody>
 
         </table>        
-        <button type="button" class="btn btn-primary"> <a href="/genrep" style={{textDecoration: "none", color:"white"}}>Generate Report</a></button>
+        <button type="button" class="btn btn-primary"> <a href="/stocks/genrep" style={{textDecoration: "none", color:"white"}}>Generate Report</a></button>
       </div>
     );
   }

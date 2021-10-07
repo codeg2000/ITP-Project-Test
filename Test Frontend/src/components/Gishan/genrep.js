@@ -32,20 +32,24 @@ retrieveStocks(){
   render() {
     return (
       <div className="container1">
-          <h2>Do you want to get a Report?</h2>
+         <div class="topnav">        
+                    <a href="/stocks">Dashboard</a>
+                    <a href="/stocks/add">Add New Stock</a>
+        </div>
+        <h2>Do you want to get a Report?</h2>
         <h2><center>All Stock Details</center></h2>
         <ReactToPrint
-trigger={() => (
-<button
-type="button"
-class="btn btn-danger"
-style={{ marginInlineStart: "0%" }}
->
-<i class="fas fa-print mr-2"></i>Print this out!
-</button>
-)}
-content={() => this.componentRef}
-/>
+            trigger={() => (
+            <button
+            type="button"
+            class="btn btn-danger"
+            style={{ marginInlineStart: "0%" }}
+            >
+            <i class="fas fa-print mr-2"></i>Print this out!
+            </button>
+            )}
+            content={() => this.componentRef}
+          />
         <table className="table table-success table-striped" style={{marginTop:'40px'}} ref={(Component) => (this.componentRef = Component)}>
           <thead>
             <tr>

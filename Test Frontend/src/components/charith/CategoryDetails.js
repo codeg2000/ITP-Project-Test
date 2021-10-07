@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cNavBar from './itemNavBar';
 
 class CategoryDetails extends Component {
     constructor(props){
@@ -28,9 +27,13 @@ componentDidMount(){
         const{CategoryName,Description,} = this.state.post;
 
         return (
-            <div>
-                <cNavBar/>
             <div className="container1">
+                <div class="topnav">
+                    <a class="active" href="/item">Dashboard</a>
+                    <a href="/item/add_item">Add Item</a>
+                    <a href="/item/categories">Categories</a>
+                    <a href="/item/add_category">Add Category</a>
+                </div>
             <div style={{marginTop:'20px'}}>
             <h4>{CategoryName}</h4>  
             <hr/>  
@@ -46,7 +49,6 @@ componentDidMount(){
          </dl>
     
 
-            </div>
             </div>
             </div>
         );

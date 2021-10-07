@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'; 
-import cNavBar from './itemNavBar';
+
 
 
 class AllCategory extends Component {
@@ -43,9 +43,13 @@ onDelete = (id) =>{
 
   render() {
     return (
-      <div>
-        <cNavBar/>
       <div className="container1">
+                <div class="topnav">
+                    <a class="active" href="/item">Dashboard</a>
+                    <a href="/item/add_item">Add Item</a>
+                    <a href="/item/categories">Categories</a>
+                    <a href="/item/add_category">Add Category</a>
+                </div>
         <div className= "search"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input></div>
         <br/>
         <h2 className="topic"> Categories</h2>
@@ -99,7 +103,7 @@ onDelete = (id) =>{
         
        
       </div>
-      </div>
+    
     );
   }
 }

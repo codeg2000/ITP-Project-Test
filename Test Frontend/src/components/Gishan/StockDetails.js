@@ -32,6 +32,10 @@ class StockDetails extends Component {
         
         return (
             <div className="container1">
+                <div class="topnav">
+                    <a href="/stocks">Dashboard</a>
+                    <a href="/stocks/add">Add New Stock</a>
+                </div>
             <div className="background">
             <div style={{marginTop:'20px'}}>
             <h4>{'Stock Details'}</h4>
