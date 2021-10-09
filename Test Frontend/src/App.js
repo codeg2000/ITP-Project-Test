@@ -31,6 +31,12 @@ import Report from './components/Kavindu/Report';
 import Supermarket from './components/Kavindu/SuperMarket';
 import './style/styles.css';
 
+import CreatePost from './components/Tharushi/CreatePost';
+import EditPost from './components/Tharushi/EditPost';
+import Home from './components/Tharushi/Home';
+import PostDetails from './components/Tharushi/PostDetails';
+import './style/Tstyles.css';
+import ReturnReport from './components/Tharushi/Report';
 
 
 class App extends Component {
@@ -67,6 +73,14 @@ class App extends Component {
         <Route path="/emp/leave/create" exact component={CreateLeave}></Route>
         <Route path="/emp/leave/edit/:id" exact component={EditLeave}></Route>
         <Route path="/emp/leave/post/:id" exact component={LeaveDetails}></Route>
+
+        
+          <Route path="/return" exact component={Home}></Route>
+          <Route path="/return/add" exact component={CreatePost}></Route>
+          <Route path="/return/edit/:id" exact component={EditPost}></Route>
+          <Route path="/return/post/:id" exact component={PostDetails}></Route>
+          <Route path="/return/Report" exact component={ReturnReport}></Route>
+
 
       </div>
       </BrowserRouter>

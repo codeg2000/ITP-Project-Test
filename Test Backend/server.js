@@ -11,8 +11,7 @@ const postRoutes = require('./routes/items');
 const CategoryRoute = require('./routes/Categories');
 const employeeRouter = require('./routes/employees.js');
 const postRouter = require('./routes/EmpLeaves.js');
-
-
+const returnRoutes = require('./routes/posts.js');
 
 //app middleware
 app.use(bodyParser.json());
@@ -26,7 +25,7 @@ app.use(postRoutes);
 app.use(CategoryRoute);
 app.use(employeeRouter);
 app.use(postRouter);
-
+app.use(returnRoutes);
 
 
 const PORT = 8000;

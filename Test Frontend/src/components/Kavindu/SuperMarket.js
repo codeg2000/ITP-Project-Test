@@ -24,7 +24,9 @@ class Supermarket extends Component {
 
                 <div className="container2">
                     <button className="sbtn btn5">Payroll Management</button>
+                    <a href="/return">
                     <button className="sbtn btn6">Return Management</button>
+                    </a>
                     <button className="sbtn btn7">Membership Management</button>
                     <button className="sbtn btn8">User Management</button>
                 </div>
