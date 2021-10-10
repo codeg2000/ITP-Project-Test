@@ -18,8 +18,10 @@ class Supermarket extends Component {
                     <a href="/item">
                     <button className="sbtn btn3">Item Management</button>
                     </a>
-                    
+                    <a href="/sales/saleslist">
                     <button className="sbtn btn4">Sales Management</button>
+                    </a>
+                    
                 </div>
 
                 <div className="container2">

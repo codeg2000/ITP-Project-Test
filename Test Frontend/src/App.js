@@ -38,6 +38,12 @@ import PostDetails from './components/Tharushi/PostDetails';
 import './style/Tstyles.css';
 import ReturnReport from './components/Tharushi/Report';
 
+import CreateSales from './components/Dulanga/components/create-sale.component';
+import EditSales from './components/Dulanga/components/edit-sale.component';  
+import Navbar from './components/Dulanga/components/navbar.component';
+import SalesChart from './components/Dulanga/components/sales-chart.component';
+import SalesList from './components/Dulanga/components/sales-list.component';
+
 
 class App extends Component {
   render() {
@@ -80,6 +86,11 @@ class App extends Component {
           <Route path="/return/edit/:id" exact component={EditPost}></Route>
           <Route path="/return/post/:id" exact component={PostDetails}></Route>
           <Route path="/return/Report" exact component={ReturnReport}></Route>
+
+          <Route path="/sales/Saleslist" exact component={SalesList}></Route>
+          <Route path= "/sales/edit/:id" component={EditSales}></Route>
+          <Route path="/sales/create" component={CreateSales}></Route>
+          <Route path="/sales/chart" component={SalesChart}></Route>
 
 
       </div>
