@@ -5,7 +5,7 @@ const employee = require("../models/Payemployee");
 const router =  express.Router();
 
 //add
-// http://localhost:8090/payment/add
+// http://localhost:8000/payment/add
 router.route("/add") .post ((req,res) => {
     
     const clas = req.body.clas ;
@@ -37,7 +37,7 @@ router.route("/add") .post ((req,res) => {
 
 //read
     
-//http://localhost:8090/payment   
+//http://localhost:8000/payment   
 router.route('/').get((req,res)=>{
     employee.find().exec((err,employees)=>{
         if(err){

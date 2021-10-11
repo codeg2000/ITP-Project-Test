@@ -47,7 +47,7 @@ const AddEmployee = (props) => {
                 medicalAllowance: medicalAllowance,
                 bankAccountNo: bankAccountNo
             }
-            axios.post("http://localhost:8090/employee/add", data).then((res) => {
+            axios.post("http://localhost:8000/payment/add", data).then((res) => {
                 if (res.data.success) {
                     setempDetails({
                         clas: "",
@@ -60,21 +60,22 @@ const AddEmployee = (props) => {
 
                     })
                 }
-                history.push('/');
+                history.push('/payment');
             });
         }
     };
 
     return (
        
-            <Container>
-                <h3 className="h3 mb-3" > Add New Salary Details </h3>
-                <form>
+            <Container style={{minHeight:"800px"}}>
+                <h3 className="Lh3 mb-3" > Add New Salary Details </h3>
+                <form className="Lform">
+                    <div style={{background:"hsl(0,0%,0%,0.7)", padding:"15px"}}> 
                     <div className="form-group" >
                         <label style={{ marginBottom: '15px' }} > </label>
                         <input type="txt" className="form-control" name="clas" placeholder="Enter Your Class" value={empDetails.clas}
                             onChange={handleInputChange} />
-                        {errors.clas && <p className="error" > {errors.clas} </p>}
+                        {errors.clas && <p className="Lerror" > {errors.clas} </p>}
                     </div>
 
                     <div className="form-group" >
@@ -86,7 +87,7 @@ const AddEmployee = (props) => {
                             value={empDetails.name}
                             onChange={handleInputChange}
                         />
-                        {errors.name && <p className="error" >{errors.name} </p>}
+                        {errors.name && <p className="Lerror" >{errors.name} </p>}
                     </div>
 
                     <div className="form-group" >
@@ -97,7 +98,7 @@ const AddEmployee = (props) => {
                             placeholder="Basic Pay"
                             value={empDetails.basicPay}
                             onChange={handleInputChange} />
-                        {errors.basicPay && <p className="error" >{errors.basicPay} </p>}
+                        {errors.basicPay && <p className="Lerror" >{errors.basicPay} </p>}
                     </div>
 
                     <div className="form-group" >
@@ -108,7 +109,7 @@ const AddEmployee = (props) => {
                             placeholder="Enter Your Salary"
                             value={empDetails.salary}
                             onChange={handleInputChange} />
-                        {errors.salary && <p className="error" > {errors.salary} </p>}
+                        {errors.salary && <p className="Lerror" > {errors.salary} </p>}
                     </div>
 
                     <div className="form-group">
@@ -119,7 +120,7 @@ const AddEmployee = (props) => {
                             placeholder="Travel Allowance"
                             value={empDetails.travelAllowance}
                             onChange={handleInputChange} />
-                        {errors.travelAllowance && <p className="error" > {errors.travelAllowance}</p>}
+                        {errors.travelAllowance && <p className="Lerror" > {errors.travelAllowance}</p>}
                     </div>
 
                     <div className="form-group" >
@@ -130,7 +131,7 @@ const AddEmployee = (props) => {
                             placeholder="Medical Allowance"
                             value={empDetails.medicalAllowance}
                             onChange={handleInputChange} />
-                        {errors.medicalAllowance && <p className="error"> {errors.medicalAllowance} </p>}
+                        {errors.medicalAllowance && <p className="Lerror"> {errors.medicalAllowance} </p>}
                     </div>
 
                     <div className="form-group" id="bankAccount" >
@@ -141,9 +142,10 @@ const AddEmployee = (props) => {
                             placeholder="Enter Your Bank Account No"
                             value={empDetails.bankAccountNo}
                             onChange={handleInputChange} />
-                        {errors.bankAccountNo && <p className="error"> {errors.bankAccountNo} </p>}
+                        {errors.bankAccountNo && <p className="Lerror"> {errors.bankAccountNo} </p>}
                     </div>
-                    <Button type="submit" variant="primary" size="sm" onClick={onSubmit} > Save </Button>
+                    <Button type="submit" variant="primary" size="sm" onClick={onSubmit} className="LButton"> Save </Button>
+                    </div>
                 </form>
             </Container>
     )    

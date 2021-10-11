@@ -2,6 +2,7 @@ import Button from '@restart/ui/esm/Button';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
+import NavBar from './LNavBar';
 //import styled, { ThemeConsumer } from 'styled-components';
 
 
@@ -16,7 +17,7 @@ export default function Home(props) {
 
 
     const retrieveEmployee=()=>{
-        axios.get("http://localhost:8090/employee").then(res =>{
+        axios.get("http://localhost:8000/payment").then(res =>{
             console.log('===============', res);
             if(res.data.success){
                 setEmployee(res.data.existingemployee);
@@ -26,7 +27,7 @@ export default function Home(props) {
     }
 
     const onDelete = (id) =>{
-        axios.delete("http://localhost:8090/employee/delete/"+id).then((res) =>{
+        axios.delete("http://localhost:8000/payment/delete/"+id).then((res) =>{
             alert("delete Successfully");
             retrieveEmployee();
         })
@@ -43,7 +44,7 @@ export default function Home(props) {
      const handleSearchArea = (e) =>{
       e.preventDefault();
       const searchKey = e.currentTarget.value;
-         axios.get("http://localhost:8090/employee").then(res =>{
+         axios.get("http://localhost:8000/payment").then(res =>{
        if(res.data.success){
         filterData(res.data.existingemployee,searchKey)
         }
@@ -52,17 +53,17 @@ export default function Home(props) {
 };
 
     const navigateReport = () => {
-        history.push({
-            pathname: "/report", 
-            state: {empData: employee} 
-        })
+        history.push(
+            "/payment/report" 
+        )
     }
 
     return (
-        
-            <div className = "container">
+            <div>
+                <NavBar/>
+            <div className = "container" style={{minHeight:"800px"}}>
             
-            <div className = " search bar" >
+            <div className = " search bar" style={{marginTop:"70px"}}>
                 <input
                     className = "form-control"
                     type="search"
@@ -71,53 +72,52 @@ export default function Home(props) {
                     onChange={handleSearchArea} 
                 />
             </div>
-
-            <table className = "table">
-                <thead>
-                    <tr>
-                        <th scope = "col"></th>
-                        <th scope = "col">Class</th>
-                        <th scope = "col">Full Name</th>
-                        <th scope = "col">Basic Pay</th>
-                        <th scope = "col">Salary</th>
-                        <th scope = "col">Travel Allowance</th>
-                        <th scope = "col">Medical Allowance</th>
-                        <th scope = "col">Bank Account No</th>
-                        <th scope = "col">Action</th>
-                    </tr>
-                </thead>
-
-                <tbody>   
-            
-                    {employee.length>0 && employee.map((employees,index) =>(
-                        <tr key='index'>
-                            
-                        <th scope = "row"> {index+1} </th>
-                        <td>{employees.clas}</td>
-                        
-                       
-                        <td>
-                        <a href ='/get/${emploeyees._id}' style ={{ textDecoration:'none'}}>
-                            {employees.name}
-                            </a>
-                            </td>
-                                         
+        <br/>
+        <h1><center>All Payment Details</center></h1>
+        <table className="table table-success table-striped" style={{marginTop:'40px'}}>
+          <thead>
+            <tr>
+                <th scope = "col">#</th>
+                <th scope = "col">Class</th>
+                <th scope = "col">Full Name</th>
+                <th scope = "col">Basic Pay</th>
+                <th scope = "col">Salary</th>
+                <th scope = "col">Travel Allowance</th>
+                <th scope = "col">Medical Allowance</th>
+                <th scope = "col">Bank Account No</th>
+                <th scope = "col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employee.length>0 && employee.map((employees,index) =>(
+              <tr key={index}>
+                <td>{index+1}</td>
+                <td>{employees.clas}</td>
+                <td>
+                    {employees.name}
+                    </td>
                         <td>{employees.basicPay}</td>                                            
                         <td>{employees.salary}</td>
                         <td>{employees.travelAllowance}</td>
                         <td>{employees.medicalAllowance}</td>
                         <td>{employees.bankAccountNo}</td>
-                                               
-                        <td>
-                            <Link className="btn btn-warning" to = {'/update/'+employees._id} variant = "success" style = {{textDecoration:'none'}}>Edit</Link>&nbsp;
-                            <button className="btn btn-danger"  onClick={() => onDelete(employees._id)}>Delete</button>
-                        </td>
-                        </tr> 
-                    ))}
-                </tbody>
+                <td>
+                  <a className="btn btn-warning" href={'/payment/update/'+employees._id}>
+                    <i className="fas fa-edit"></i>&nbsp;Edit
+                  </a>
+                  &nbsp;
+                  <a className="btn btn-danger" href="#" onClick={()=> onDelete(employees._id)}>
+                    <i className="far fa-trash-alt"></i>&nbsp;Delete
+                  </a>
 
-        </table>
-            
+                </td>
+
+              </tr>
+            ))}
+          </tbody>
+
+        </table>        
+
                 <Button variant="success" class="btn btn-primary" style={{textDecoration:'none',color:'black'}} onClick={() => history.push("/payment/add")}>Add New Salary Details</Button>&nbsp;&nbsp;
                 
                 <Button 
@@ -130,162 +130,12 @@ export default function Home(props) {
                 </Button>
                 
             </div>
+            </div>
     )
 }
 
 
 
-
-
-
-// import React,{useState,useEffect,Component} from 'react';
-// import axios from 'axios';
-// import { Button } from 'react-bootstrap';
-// import { useHistory } from "react-router-dom";
-// import styled from "styled-components";
-// import { Link } from 'react-router-dom';
-
-// const Home =(props)=>{
-//   const history = useHistory();
-//   const [employee, setEmployee]=useState([]);
-
-//   useEffect(() => {
-//     retrieveEmployee();
-//   }, []);
-  
-//   const retrieveEmployee=()=>{
-//     axios.get("http://localhost:8090/employee").then(res =>{
-//       console.log(res);
-//       if(res.data.success){
-//         setEmployee(res.data.existingemployee);
-
-//         console.log(employee);
-//       }
-//     });
-   
-//   }
-
-//   const onDelete = (id) =>{
-//     axios.delete(`http://localhost:8090/employee/delete/${id}`).then((res) =>{
-//       alert(res.data.name + "has been delete Successfully");
-//       this.retrieveEmployee();
-//     })
-
-//   }
-
-//   const filterData =(employee,searchKey)=>{
-
-//     const result = employee.filter((employee)=>
-//     employee.name.toLowerCase.includes(searchKey)
-  
-//   )
-  
-//       this.setState({employee:result})
-//   }
-
-//   }
-
-   
-//   const handleSearchArea = (e) =>{
-
-//     const searchKey = e.currentTarget.value;
-
-//     axios.get("http://localhost:8090/employee").then(res =>{
-//       if(res.data.success){
-
-//         this.filterData(res.data.existingemployee,searchKey)
-//       }
-    
-//   });
-
-
-//     return (
-//         <div>Here tesst</div>
-//     );
- 
-
-
-//   return(
-//     <Home1>
-//     <div className = "container">
-
-//       <div className = " search bar">
-//         <input
-//         className = "form-control"
-//         type="search"
-//         placeholder = "search"
-//         name="searchQuery"
-//         onChange={this.handleSearchArea}>
-
-//         </input>
-//         </div>
-
-//       <table className = "table">
-//         <thead>
-//           <tr>
-//             <th scope = "col"></th>
-//             <th scope = "col">Class</th>
-//             <th scope = "col">Full Name</th>
-//             <th scope = "col">Basic Pay</th>
-//             <th scope = "col">Salary</th>
-//             <th scope = "col">Travel Allowance</th>
-//             <th scope = "col">Medical Allowance</th>
-//             <th scope = "col">Bank Account No</th>
-//             <th scope = "col">Action</th>
-//           </tr>
-//         </thead>
-
-//         <tbody>   
-          
-//           {employee.length>0 && employee.map((employees,index) =>(
-//             <tr key='index'>
-                
-//               <th scope = "row"> {index+1} </th>
-
-//               <td>{employees.cls}</td>
-//               <td>
-//               <a href ='/get/${emploeyees._id}' style ={{ textDecoration:'none'}}>
-//                   {employees.name}
-//                   </a>
-//                   </td>
-//               <td>{employees.basicPay}</td>
-//               <td>{employees.salary}</td>
-//               <td>{employees.travelAllowance}</td>
-//               <td>{employees.medicalAllowance}</td>
-//               <td>{employees.bankAccountNo}</td>
-
-//               <td>
-//               <Link className="btn btn-warning" to = {'/edit/' + this.props.obj_id}variant = "success" style = {{textDecoration:'none'}}>Edit</Link>&nbsp;
-//               <Button className="btn btn-danger" onClick={() => this.onDelete(employees._id)}>Delete</Button>
-//               </td>
-
-//             </tr> 
-//           ))}
-
-          
-          
-//         </tbody>
-
-//       </table>
-          
-//       <Button variant="success" style={{textDecoration:'none',color:'white'}} onClick={() => history.push("/add")}>Add New Salary Details</Button>
-//             </div>
-//       </Home1>
-//   )
-// }
-
-
-// const Home1=styled.div`
-//  background: #f5f5f5;
-// min-height: 60vh;
-// padding-top: 6em;
-// .table{
-// padding:10px;
-// font-size:15px;
-// }
-// `;
-
-// export default Home;
 
 
 

@@ -32,7 +32,7 @@ class EditDetails extends React.Component {
 
     componentDidMount() {
         console.log(this.props)
-        axios.get('http://localhost:8090/employee/get/' + this.props.match.params.id)
+        axios.get('http://localhost:8000/payment/get/' + this.props.match.params.id)
             .then(response => {
                 console.log(response)
                 this.setState({
@@ -103,16 +103,19 @@ class EditDetails extends React.Component {
             travelAllowance: this.state.travelAllowance,
             bankAccountNo: this.state.bankAccountNo
         };
-        axios.post('http://localhost:8090/employee/update/' + this.props.match.params.id, obj)
+        axios.post('http://localhost:8000/payment/update/' + this.props.match.params.id, obj)
             .then(response => console.log(response.data));
 
-        this.props.history.push('/');
+        this.props.history.push('/payment');
     }
 
     render() {
-        return ( <div >
-            <form onSubmit = { this.onSubmit } >
+        return ( <div className="Lcontainer container" style={{minHeight:"800px"}}>
+            <h3><center>Edit Payment Details</center></h3>
+            <form onSubmit = { this.onSubmit } className="LPform">
+            <div style={{background:"hsl(180,100%,50%,0.9)", padding:"15px"}}> 
             <div className = "form-group" >
+            
             <label > Class: </label> <input type = "text"
             required className = "form-control"
             value = { this.state.clas }
@@ -167,8 +170,10 @@ class EditDetails extends React.Component {
             <div className = "form-group" >
             < input type = "submit"
             value = "Edit"
-            className = "btn btn-primary"  />
-            </div> </form>
+            className = "btn btn-primary subButton"/>
+            </div>
+            </div> 
+            </form>
             </div>
         );
     };

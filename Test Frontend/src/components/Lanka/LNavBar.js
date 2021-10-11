@@ -28,7 +28,7 @@ const NavBar=()=>{
           <Nav className="mr-auto"></Nav>
           <Nav>
             <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)}>
-            All Details
+            Home
             </Nav.Link>
           </Nav>
        
