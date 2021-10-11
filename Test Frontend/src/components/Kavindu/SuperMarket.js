@@ -32,7 +32,9 @@ class Supermarket extends Component {
                     <button className="sbtn btn6">Return Management</button>
                     </a>
                     <button className="sbtn btn7">Membership Management</button>
+                    <a href="/department/">
                     <button className="sbtn btn8">User Management</button>
+                    </a>
                 </div>
             </body>
         );

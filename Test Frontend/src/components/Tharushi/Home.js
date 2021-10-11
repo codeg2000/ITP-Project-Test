@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import NavBar from './TNavBar'
 
 export default class Home extends Component {
 constructor(props){
@@ -62,11 +63,13 @@ handleSearchArea = (e) =>{
 }
   render() {
     return (
-      <div className="container">
+      <div>
+      <NavBar/>
+      <div className="container"  style={{minHeight:"700px"}}>
           
         <br></br>
         <div className="raw">
-            <div className="col-lg-9 mt-2 mb-2">
+            <div >
             <center><h2>All Return Details</h2></center>
             </div>
             <div className="col-lg-3 mt-2-mb-2">
@@ -127,6 +130,7 @@ handleSearchArea = (e) =>{
 
         <button className="btn btn-success"><a href="/return/add" style={{textDecoration:'none',color:'white'}}>Create New Post</a></button>
         
+      </div>
       </div>
     )
   }

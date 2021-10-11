@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import NavBar from './TNavBar'
 
 export default class PostDetails extends Component {
     constructor(props){
@@ -29,6 +30,8 @@ export default class PostDetails extends Component {
 
         const {Return_ID,Return_Date,Return_ItemName,Customer_Name,Customer_ContactNo,Return_Reason} = this.state.post;
         return (
+            <div  style={{minHeight:"700px"}}>
+            <NavBar/>
             <div style={{marginTop:'20px'}}>
                 <h4>{Return_ID}</h4>
                 <hr/>
@@ -49,6 +52,7 @@ export default class PostDetails extends Component {
                     <dt className="col-sm-3">Return_Reason</dt>
                     <dd className="col-sm-9">{Return_Reason}</dd>
                 </dl>
+            </div>
             </div>
             
         )

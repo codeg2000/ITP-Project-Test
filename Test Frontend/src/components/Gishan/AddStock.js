@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {setErrors} from "./setErrors"
+import { Form,Button,Col,Row,InputGroup } from "react-bootstrap";
 
 class AddStock extends Component {
 
@@ -13,7 +13,8 @@ class AddStock extends Component {
             Supplier_Name :"",
             Supplier_Email :"",
             Supplier_ContactNo :"",
-            errors:{}
+          validated:false
+        
         };
     }
 
@@ -26,19 +27,24 @@ class AddStock extends Component {
         })
     }
 
-    validate=(Stock_ID, Supplier_Email, Supplier_ContactNo)=>{
-      const errors = setErrors(Stock_ID, Supplier_Email, Supplier_ContactNo);
-      this.setState({errors:errors});
-      return Object.values(errors).every((err)=>err==="");
-    };
+   
 
     onSubmit = (e) =>{
+
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+        }
+        else{
+    
+
         e.preventDefault();
 
         const id = this.props.match.params.id;
 
         const {Stock_ID,Stock_Name,Stock_Quantity,Supplier_Name,Supplier_Email,Supplier_ContactNo} = this.state;
-        if (this.validate(Stock_ID, Supplier_Email, Supplier_ContactNo)) {
+     
             const data ={
 
                 Stock_ID:Stock_ID,
@@ -55,6 +61,7 @@ class AddStock extends Component {
             axios.post(`http://localhost:8000/stock/add`,data).then((res) =>{
                 if(res.data.success){
                     alert("Stock added Successfully")
+                    window.location.replace("/stocks")
                     this.setState(
                         {
                             Stock_ID :"",
@@ -67,22 +74,24 @@ class AddStock extends Component {
                     )
                 }
             })  
-        }
-        
+      
+    }
+    this.setState({ validated: true })
     }
 
 
     render() {
         return (
             <div className="container1">
-                <div class="topnav">       
+                <div class="topnav">   
+                <a class="active" href="/">Home</a>
                     <a href="/stocks">Dashboard</a>
                     <a href="/stocks/add">Add New Stock</a>
                 </div>
             <div className="col-md-8 mt-4 mx-auto">
             <h2 className="h3 mb-3 font-weight-normal text-center">Add New Stock</h2>
             <div className="Addui">
-            <form onSubmit={this.onSubmit}>
+            <Form noValidate validated={this.state.validated} onSubmit={this.onSubmit}>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
                 <label className="form-label" style={{marginBottom:'5px'}}> Stock ID </label>
@@ -90,12 +99,14 @@ class AddStock extends Component {
                 className="form-control"
                 name="Stock_ID"
                 placeholder="Enter Stock_ID"
+                required
                 value={this.state.Stock_ID}
                 onChange={this.handleInputChange}
                 />
-                {this.state.errors.Stock_ID && (
-                    <div className="text-danger">{this.state.errors.Stock_ID}</div>
-                )}
+                <Form.Control.Feedback type="invalid">
+Please provide  Stock IDs
+</Form.Control.Feedback> 
+              
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
@@ -103,9 +114,13 @@ class AddStock extends Component {
                 <input type="text" 
                 className="form-control"
                 name="Stock_Name"
+                required
                 placeholder="Enter Stock_Name"
                 value={this.state.Stock_Name}
                 onChange={this.handleInputChange} />
+                <Form.Control.Feedback type="invalid">
+Please provide Stock Name
+</Form.Control.Feedback> 
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
@@ -113,33 +128,43 @@ class AddStock extends Component {
                 <input type="text" 
                 className="form-control"
                 name="Stock_Quantity"
+                required
                 placeholder="Enter Stock_Quantity"
                 value={this.state.Stock_Quantity}
                 onChange={this.handleInputChange} />
+                <Form.Control.Feedback type="invalid">
+Please provide Stock Quantity
+</Form.Control.Feedback> 
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
                 <label className="form-label" style={{marginBottom:'5px'}}> Supplier Name </label>
                 <input type="text" 
                 className="form-control"
+                required
                 name="Supplier_Name"
                 placeholder="Enter Supplier_Name"
                 value={this.state.Supplier_Name}
                 onChange={this.handleInputChange} />
+                <Form.Control.Feedback type="invalid">
+Please provide  Supplier Name
+</Form.Control.Feedback> 
             </div>
             
             <div className="form-group" style={{marginBottom:'15px'}}>
                 <label className="form-label" style={{marginBottom:'5px'}}> Supplier Email </label>
                 <input type="text" 
                 className="form-control"
+                required
                 name="Supplier_Email"
                 placeholder="Enter Supplier_Email"
                 value={this.state.Supplier_Email}
                 onChange={this.handleInputChange} 
                 />
-                {this.state.errors.Supplier_Email && (
-                    <div className="text-danger">{this.state.errors.Supplier_Email}</div>
-                )}
+                <Form.Control.Feedback type="invalid">
+Please provide Supplier Email
+</Form.Control.Feedback> 
+                
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
@@ -147,20 +172,22 @@ class AddStock extends Component {
                 <input type="text" 
                 className="form-control"
                 name="Supplier_ContactNo"
+                required
                 placeholder="Enter Supplier_ContactNo"
                 value={this.state.Supplier_ContactNo}
                 onChange={this.handleInputChange} 
                 />
-                {this.state.errors.Supplier_ContactNo && (
-                    <div className="text-danger">{this.state.errors.Supplier_ContactNo}</div>
-                )}
+                <Form.Control.Feedback type="invalid">
+Please provideSupplier ContactNo
+</Form.Control.Feedback> 
+               
             </div>
 
             <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
                 <i className="far fa-check-square"></i>
                 &nbsp; Save
             </button>
-            </form>
+            </Form>
             </div>
             </div>
             </div>

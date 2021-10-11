@@ -205,6 +205,7 @@ export default class EditSales extends Component {
           </div>
 
           <form onSubmit={this.onSubmit}>
+            <div  style={{background:"hsl(0,0%,55%,0.9)",padding:"20px"}}>
             <div className="form-group" style={{ marginTop: "30px" }}>
               <label className="text">Description: </label>
               <input type="text"
@@ -241,7 +242,8 @@ export default class EditSales extends Component {
             </div>
 
             <div className="form-group" style={{ marginTop: "30px", marginBottom: "50px" }}>
-              <input type="submit" value="Edit a Sale" className="btn btn-primary" />
+            <center>  <input type="submit" value="Edit a Sale" style={{width:"30%",height:"50px",fontSize:"20px"}} className="btn btn-primary" /></center>
+            </div>
             </div>
           </form>
         </div>

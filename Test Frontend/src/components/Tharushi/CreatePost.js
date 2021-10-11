@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import NavBar from './TNavBar'
 
 export default class CreatePost extends Component {
 
@@ -63,12 +64,15 @@ export default class CreatePost extends Component {
 
     render() {
         return (
+            <div>
+        <NavBar/>
             
-            <div className="col-md-8 mt-4 mx-auto">
-                <h1 className="h3 mb-3 font-weight-normal">Create new post</h1>
+            <div className="col-md-8 mt-4 mx-auto"  style={{minHeight:"700px"}}>
+              <center> <b> <h1 className="h3 mb-3 font-weight-normal">Create new post</h1></b></center>
                 <form className="needs-validation" noValidate>
+                <div style={{background:"hsl(180,60%,25%,0.9)",padding:"20px"}}>
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                        <label style={{marginBottom:'5px'}} >Return_ID</label>
+                        <label style={{marginBottom:'5px',color:"white"}} >Return_ID</label>
                         <input type="text"
                         className="form-control"
                         name="Return_ID"
@@ -78,7 +82,7 @@ export default class CreatePost extends Component {
                     </div>
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                        <label style={{marginBottom:'5px'}} >Return_Date</label>
+                        <label style={{marginBottom:'5px',color:"white"}} >Return_Date</label>
                         <input type="text"
                         className="form-control"
                         name="Return_Date"
@@ -88,7 +92,7 @@ export default class CreatePost extends Component {
                     </div>
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                        <label style={{marginBottom:'5px'}} >Return_ItemName</label>
+                        <label style={{marginBottom:'5px',color:"white"}} >Return_ItemName</label>
                         <input type="text"
                         className="form-control"
                         name="Return_ItemName"
@@ -98,7 +102,7 @@ export default class CreatePost extends Component {
                     </div>
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                        <label style={{marginBottom:'5px'}} >Customer_Name</label>
+                        <label style={{marginBottom:'5px',color:"white"}} >Customer_Name</label>
                         <input type="text"
                         className="form-control"
                         name="Customer_Name"
@@ -108,7 +112,7 @@ export default class CreatePost extends Component {
                     </div>
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                        <label style={{marginBottom:'5px'}} >Customer_ContactNo</label>
+                        <label style={{marginBottom:'5px',color:"white"}} >Customer_ContactNo</label>
                         <input type="text"
                         className="form-control"
                         name="Customer_ContactNo"
@@ -118,7 +122,7 @@ export default class CreatePost extends Component {
                     </div>
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                        <label style={{marginBottom:'5px'}} >Return_Reason</label>
+                        <label style={{marginBottom:'5px',color:"white"}} >Return_Reason</label>
                         <input type="text"
                         className="form-control"
                         name="Return_Reason"
@@ -127,11 +131,13 @@ export default class CreatePost extends Component {
                         onChange={this.handleInputChange}/>
                     </div>
 
-                    <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
+                  <center>  <button className="btn btn-danger" type="submit" style={{marginTop:'15px',width:"40%"}} onClick={this.onSubmit}>
                         <i className="far fa-check-square"></i>
                         &nbsp; Save
-                    </button>
+                    </button></center>
+                    </div>
                 </form>
+            </div>
             </div>
         )
     }

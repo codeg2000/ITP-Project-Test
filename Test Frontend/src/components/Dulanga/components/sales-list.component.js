@@ -126,12 +126,14 @@ export default class SalesList extends Component {
                 label="Search Name"
                 variant="outlined"
                 size="small"
+                type="search"
+                style={{marginTop:"30px",marginLeft:"150px",background:"white"}}
                 onChange={this.search}
               />
             </div>
           </div>
 
-          <table class="table table-bordered">
+          <table class="table table-success table-striped">
             <thead className="thead-light">
               <tr class="table-primary">
                 <th>Item name</th>

@@ -35,7 +35,8 @@ class LeaveDetails extends Component {
                 return (
                     <div className="container1">
                         <div class="topnav">
-                            <a class="active" href="/emp">DashBoard</a>
+                        <a class="active" href="/">Home</a>
+                            <a  href="/emp">DashBoard</a>
                             <a  href="/emp/add">Add Employee</a>
                             <a href="/emp/leave/create">Create Leave</a>
                             <a href="/emp/leave">View Leaves</a>

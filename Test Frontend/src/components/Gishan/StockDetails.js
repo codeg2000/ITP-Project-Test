@@ -33,6 +33,7 @@ class StockDetails extends Component {
         return (
             <div className="container1">
                 <div class="topnav">
+                <a class="active" href="/">Home</a>
                     <a href="/stocks">Dashboard</a>
                     <a href="/stocks/add">Add New Stock</a>
                 </div>

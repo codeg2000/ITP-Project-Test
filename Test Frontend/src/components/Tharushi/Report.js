@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactToPrint from 'react-to-print';
+import NavBar from './TNavBar'
 
 class Home extends Component {
 constructor(props){
@@ -31,7 +32,9 @@ retrievePosts(){
  
   render() {
     return (
-      <div className="container1">
+      <div>
+      <NavBar/>
+      <div className="container1"  style={{minHeight:"700px"}}>
           <h2>Do you want to get a Report?</h2>
         <h2><center>All Return Details</center></h2>
         <ReactToPrint
@@ -77,6 +80,7 @@ content={() => this.componentRef}
           </tbody>
 
         </table>        
+      </div>
       </div>
     );
   }

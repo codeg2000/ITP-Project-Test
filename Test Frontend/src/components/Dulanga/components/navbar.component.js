@@ -24,17 +24,20 @@ export default class Navbar extends Component {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <Link to="/sales/Saleslist" className="nav-link">Sales Management</Link>
+          <li class="nav-item active">
+              <Link to="/" className="nav-link active" style={{background:"green"}} >Home</Link>
+            </li>
+            <li class="nav-item ">
+              <Link to="/sales/Saleslist"  style={{textDecoration:'none', color:"white"}} className="nav-link">Sales Management</Link>
             </li>
             <li class="nav-item">
-              <Link to="/sales/Saleslist" className="nav-link">Sales</Link>
+              <Link to="/sales/Saleslist" style={{textDecoration:'none', color:"white"}} className="nav-link">Sales</Link>
             </li>
             <li class="nav-item">
-              <Link to="/sales/create" className="nav-link">Create a Sale</Link>
+              <Link to="/sales/create"  style={{textDecoration:'none', color:"white"}} className="nav-link">Create a Sale</Link>
             </li>
             <li class="nav-item">
-              <Link to="/sales/chart" className="nav-link">Sale Chart</Link>
+              <Link to="/sales/chart"  style={{textDecoration:'none', color:"white"}} className="nav-link">Sale Chart</Link>
             </li>
             {/* <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>

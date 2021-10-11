@@ -50,6 +50,12 @@ import EmpDetails from "./components/Lanka/EmpDetails";
 import Lhome from "./components/Lanka/Lhome";
 import LReport from "./components/Lanka/Lreport";
 import './style/Lstyle.css';
+import Login from "./components/Manula/Login.jsx";
+import DepartmentHome from "./components/Manula/home.jsx";
+import AddDepartment from "./components/Manula/AddDepartment.jsx";
+import AllDepartment from "./components/Manula/AllDepartment";
+import EditDepartment from "./components/Manula/EditDepartment";
+import HomeView from "./components/Manula/HomeView";
 
 
 
@@ -105,6 +111,14 @@ class App extends Component {
           <Route path="/payment/get/id" component={EmpDetails}></Route>
           <Route path="/payment/" exact component={Lhome}></Route>
           <Route path="/payment/report" component={LReport}></Route>
+
+
+          <Route path="/department/" exact component={Login} />
+          <Route path="/department/home" exact component={HomeView} />
+          <Route path="/department/manage-access" exact component={DepartmentHome} />
+          <Route path="/department/add_department" exact component={AddDepartment} />
+          <Route path="/department/all_department" exact component={AllDepartment} />
+          <Route path="/department/edit_department/:id" exact component={EditDepartment} />
       </div>
       </BrowserRouter>
       </div>
