@@ -1,0 +1,97 @@
+.div{
+ padding-top:7em;
+
+ background-position: right;
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-height: 50vh;
+ display: flex;
+ justify-content: center;
+}
+.h3{
+    padding:10px;
+    font-size:20px;
+    font-weight:bold;
+    display: flex;
+    justify-content: center;
+}
+form{
+    padding-left:250px;
+    padding-right:250px;
+    padding-bottom:30px;
+   
+}
+
+#bankAccount{ 
+     padding-bottom:30px;
+}
+Button { padding: 6px 50px;
+}
+.error{
+    color:	#FF0000 !important;
+}
+
+
+   
+    container{
+        background: '#f5f5f5';
+        padding-Top:100;
+        padding-Right:200;
+        padding-Left:200;
+        margin:30;
+        
+    }
+    form{
+    padding:30;
+    }
+    subButton{
+        padding-Left:30;
+        padding-Right:30;
+    }
+
+    .div{
+ background: #f5f5f5;
+min-height: 100vh;
+padding-top: 6em;
+    }
+.table{
+padding:10px;
+font-size:15px;
+}
+
+
+
+
+.bg-dark {
+  background-color: #ffffff !important;
+}
+.navbar {
+  padding: 0.55em 1em;
+}
+image {
+  width: 10%;
+  height: 10%;
+  object-fit: scale-down;
+}
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 1em;
+  padding-left: 4em;
+  justify-content: space-around;
+  font-weight: bold;
+  color: #00488f;
+}
+
+.div-rep{
+ background: #f5f5f5;
+min-height: 100vh;
+padding-top: 6em;
+}
+.table{
+padding:10px;
+font-size:15px;
+}
+
+
+
+
+

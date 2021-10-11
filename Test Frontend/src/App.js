@@ -44,6 +44,15 @@ import Navbar from './components/Dulanga/components/navbar.component';
 import SalesChart from './components/Dulanga/components/sales-chart.component';
 import SalesList from './components/Dulanga/components/sales-list.component';
 
+import AddEmployee from "./components/Lanka/AddEmployee";
+import EditDetails from "./components/Lanka/EditDetails";
+import EmpDetails from "./components/Lanka/EmpDetails";
+import LHome from "./components/Lanka/Lhome";
+import LNavBar from "./components/Lanka/LNavBar";
+import LReport from "./components/Lanka/Lreport";
+import './style/Lstyle.css';
+
+
 
 class App extends Component {
   render() {
@@ -92,6 +101,13 @@ class App extends Component {
           <Route path="/sales/create" component={CreateSales}></Route>
           <Route path="/sales/chart" component={SalesChart}></Route>
 
+          <LNavBar/>
+          <Route path="/payment"  exact component ={LHome}></Route>
+          <Route path="/payment/add" component ={AddEmployee}></Route>
+          <Route path="/payment/report" component ={LReport}></Route>
+          <Route path="/payment/update/:id" component ={EditDetails}></Route>
+          <Route path="/payment/get/id"  component ={EmpDetails}></Route>
+          <Route path="/payment/delete/${id}"  exact component ={LHome}></Route>
 
       </div>
       </BrowserRouter>
