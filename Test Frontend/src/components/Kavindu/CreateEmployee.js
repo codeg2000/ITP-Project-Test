@@ -3,6 +3,7 @@ import axios from 'axios'
 
 
 const initialState = {
+    empid:"",
     firstname:"",
     lastname:"",
     age:"",
@@ -24,6 +25,7 @@ class CreateEmployee extends Component {
     constructor(props){
         super(props);
         this.state={
+            empid:"",
             firstname:"",
             lastname:"",
             age:"",
@@ -54,11 +56,11 @@ class CreateEmployee extends Component {
         let contactNoError="";
 
         if(!this.state.contactNo){
-            contactNoError=" Contact Number cannot be blank";
+            contactNoError="This field is required !!!";
         }
 
         if(!this.state.nicNo){
-            nicNoError="NIC cannot be blank";
+            nicNoError="This field is required !!!";
         }
 
         if(nicNoError || contactNoError ){
@@ -72,10 +74,10 @@ class CreateEmployee extends Component {
     onSubmit = (e)=>{
         e.preventDefault();
 
-        const { firstname,lastname,age,nicNo,gender,dob,address,contactNo,jobTitle,joinedDate} = this.state;
+        const { empid,firstname,lastname,age,nicNo,gender,dob,address,contactNo,jobTitle,joinedDate} = this.state;
 
         const data ={
-
+            empid:empid,
             firstname: firstname,
             lastname: lastname,
             age: age,
@@ -101,8 +103,10 @@ class CreateEmployee extends Component {
         axios.post('http://localhost:8000/employee/add',data).then((res)=>{
             if(res.data.success){
                 alert("Employee Added successfully")
+                window.location.replace("/emp")
                 this.setState(
                     {
+                        empid:"",
                         firstname:"",
                         lastname:"",
                         age:"",
@@ -132,7 +136,7 @@ class CreateEmployee extends Component {
                     <a href="/emp/leave">View Leaves</a>
                  </div>
                 <br/>
-                <h2 className="h3 mb-3 font-weight-normal text-center">Add New Employee</h2>
+                
                     <div className="row">
 
                         <div className="col-lg-3"></div>
@@ -140,7 +144,24 @@ class CreateEmployee extends Component {
                         <div className="col-lg-6">
 
                             <div className="ui">
+                            <h2 className="h3 mb-3 font-weight-normal text-center">Add New Employee</h2>
+                            <br/>
                                 <form className="form-group" onSubmit={this.onSubmit}>
+
+                                <div className="row">
+                                        
+                                        <div className="col-lg-6">
+                                            <label>Employee ID :</label>
+                                            <input type="text" 
+                                             name="empid" 
+                                             className="form-control"
+                                             placeholder="ex:-E0001"
+                                             value={this.state.empid}
+                                            onChange={this.handleInputChange} />
+                                        </div>
+
+                                    </div>
+                                    <br/>
 
                                     <div className="row">
                                         <div className="col-lg-6">
@@ -251,10 +272,9 @@ class CreateEmployee extends Component {
                                         </div>
                                     </div>
 
-                                    <button type="submit" className="btn btn-success btn-block" style={{marginTop:'15px'}} >
-                                    <i className="far fa-check-square"></i>
-                                    &nbsp; Save
-                                    </button>
+                                    <div className="button">
+                                    <input type="submit"  value="Save"/>   
+                                    </div>
 
                                 </form>
 

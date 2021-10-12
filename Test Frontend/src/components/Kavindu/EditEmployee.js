@@ -8,6 +8,7 @@ class EditEmployee extends Component {
     constructor(props){
         super(props);
         this.state={
+            empid:"",
             firstname:"",
             lastname:"",
             age:"",
@@ -35,10 +36,11 @@ class EditEmployee extends Component {
         e.preventDefault();
         const id = this.props.match.params.id;
 
-        const { firstname,lastname,age,nicNo,gender,dob,address,contactNo,jobTitle,joinedDate} = this.state;
+        const { empid,firstname,lastname,age,nicNo,gender,dob,address,contactNo,jobTitle,joinedDate} = this.state;
 
         const data ={
 
+            empid:empid,
             firstname: firstname,
             lastname: lastname,
             age: age,
@@ -56,8 +58,10 @@ class EditEmployee extends Component {
         axios.put(`http://localhost:8000/employee/update/${id}`,data).then((res)=>{
             if(res.data.success){
                 alert("Employee details updated successfully")
+                window.location.replace("/emp")
                 this.setState(
                     {
+                        empid:"",
                         firstname:"",
                         lastname:"",
                         age:"",
@@ -82,6 +86,7 @@ class EditEmployee extends Component {
         axios.get(`http://localhost:8000/employee/emp/${id}`).then((res) =>{
             if(res.data.success){
                 this.setState({
+                    empid:res.data.post.empid,
                     firstname:res.data.post.firstname,
                     lastname:res.data.post.lastname,
                     age:res.data.post.age,
@@ -113,7 +118,7 @@ class EditEmployee extends Component {
                     <a href="/emp/leave">View Leaves</a>
                  </div>
                 <br/>
-                <h2 className="h3 mb-3 font-weight-normal text-center">Edit Employee</h2>
+               
                     <div className="row">
 
                         <div className="col-lg-3"></div>
@@ -121,7 +126,23 @@ class EditEmployee extends Component {
                         <div className="col-lg-6">
 
                             <div className="ui">
+                            <h2 className="h3 mb-3 font-weight-normal text-center">Edit Employee</h2>
                                 <form className="form-group" onSubmit={this.onSubmit}>
+
+                                <div className="row">
+                                        
+                                        <div className="col-lg-6">
+                                            <label>Employee ID :</label>
+                                            <input type="text" 
+                                             name="empid" 
+                                             className="form-control"
+                                             placeholder="ex:-E0001"
+                                             value={this.state.empid}
+                                            onChange={this.handleInputChange} />
+                                        </div>
+
+                                    </div>
+                                    <br/>
 
                                     <div className="row">
                                         <div className="col-lg-6">
@@ -231,10 +252,9 @@ class EditEmployee extends Component {
                                     </div>
 
                                    
-                                    <button type="submit" className="btn btn-success btn-block" style={{marginTop:'15px'}} >
-                                    <i className="far fa-check-square"></i>
-                                    &nbsp; update
-                                    </button>
+                                    <div className="button">
+                                    <input type="submit"  value="Update"/>   
+                                    </div>
                                     
 
                                 </form>

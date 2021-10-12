@@ -30,11 +30,13 @@ class EmpHome extends Component {
   }
 
   onDelete=(id)=>{
-
+     // eslint-disable-next-line no-restricted-globals
+     if(confirm("Are you Sure you want to delete this item?")){
     axios.delete(`http://localhost:8000/employee/delete/${id}`).then((res) =>{
       alert("Delete Successfully");
       this.retrievePosts();
-    })
+      })
+    }
   }
 
   filterData(posts,searchKey){
@@ -89,13 +91,12 @@ class EmpHome extends Component {
             <thead>
               <tr >
                 <th scope="col">#</th>   
+                <th scope="col">Emp ID</th>  
                 <th scope="col">First Name</th> 
                 <th scope="col">Last Name</th> 
                 <th scope="col">Age</th>
                 <th scope="col">NIC No</th>
                 <th scope="col">Gender</th>
-                <th scope="col">DOB</th>
-                <th scope="col">Permenent Address</th>
                 <th scope="col">Contact No</th>
                 <th scope="col">Job Title</th>
                 <th scope="col">Joined Date</th>
@@ -107,7 +108,8 @@ class EmpHome extends Component {
               {this.state.posts.map((posts,index) =>(
                 <tr key={index}>
                   <th scope="row">{index+1}</th>
-                  
+
+                  <td>{posts.empid}</td>
                   <td>
                       <a href={`/emp/post/${posts._id}`} style={{textDecoration:"none"}}>
                       {posts.firstname}
@@ -117,8 +119,6 @@ class EmpHome extends Component {
                   <td>{posts.age}</td>
                   <td>{posts.nicNo}</td>
                   <td>{posts.gender}</td>
-                  <td>{posts.dob}</td>
-                  <td>{posts.address}</td>
                   <td>{posts.contactNo}</td>
                   <td>{posts.jobTitle}</td>
                   <td>{posts.joinedDate}</td>

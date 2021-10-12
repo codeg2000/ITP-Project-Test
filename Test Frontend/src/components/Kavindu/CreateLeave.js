@@ -49,6 +49,7 @@ class CreateLeave extends Component {
         axios.post('http://localhost:8000/post/create',data).then((res)=>{
             if(res.data.success){
                 alert("Leave details created successfully")
+                window.location.replace("/emp/leave")
                 this.setState(
                     {
                         nicNo:"",
@@ -75,7 +76,7 @@ class CreateLeave extends Component {
                         <a href="/emp/leave">View Leaves</a>
                     </div>
                 <br/>
-                <h2 className="h3 mb-3 font-weight-normal text-center">Create Leave </h2>
+                
 
                     <div className="row">
 
@@ -84,12 +85,13 @@ class CreateLeave extends Component {
                         <div className="col-lg-6">
 
                             <div className="ui">
+                            <h2 className="h3 mb-3 font-weight-normal text-center">Create Leave </h2>
 
                                 <form className="form-group" onSubmit={this.onSubmit}>
 
                                     <div>
                                     <label>NIC No :</label>
-                                    <input type="text"
+                                    <input type="text" required
                                     name="nicNo" 
                                     className="form-control"
                                     placeholder="Enter Employee NIC NO"
@@ -100,7 +102,7 @@ class CreateLeave extends Component {
 
                                     <div>
                                     <label>From Date :</label>
-                                    <input type="date"
+                                    <input type="date" required
                                     name="fromDate" 
                                     className="form-control"
                                     placeholder="Enter Employee First Name"
@@ -111,7 +113,7 @@ class CreateLeave extends Component {
 
                                     <div>
                                     <label>To Date :</label>
-                                    <input type="date"
+                                    <input type="date" required
                                     name="toDate" 
                                     className="form-control"
                                     value={this.state.toDate}
@@ -121,7 +123,7 @@ class CreateLeave extends Component {
 
                                     <div>
                                     <label>Type Of Leave :</label>
-                                    <input type="text"
+                                    <input type="text" required
                                     name="typeOfLeave" 
                                     className="form-control"                              
                                     value={this.state.typeOfLeave}
@@ -131,7 +133,7 @@ class CreateLeave extends Component {
 
                                     <div>
                                     <label>Description :</label>
-                                    <textarea type="text"
+                                    <textarea type="text" required
                                     name="description" 
                                     className="form-control"
                                     placeholder="Enter Description"
@@ -140,10 +142,9 @@ class CreateLeave extends Component {
                                     onChange={this.handleInputChange} />
                                     </div>
 
-                                    <button type="submit" className="btn btn-success" style={{marginTop:'10px'}} >
-                                    <i className="far fa-check-square"></i>
-                                    &nbsp; Save
-                                    </button>
+                                    <div className="button">
+                                    <input type="submit"  value="Save"/>   
+                                    </div>
                             
                                 </form>
 

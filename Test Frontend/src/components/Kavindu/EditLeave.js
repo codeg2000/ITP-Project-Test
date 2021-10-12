@@ -48,7 +48,8 @@ class EditLeave extends Component {
 
         axios.put(`http://localhost:8000/post/update/${id}`,data).then((res)=>{
             if(res.data.success){
-                alert("Employee details updated successfully")
+                alert("Leave details updated successfully")
+                window.location.replace("/emp/leave")
                 this.setState(
                     {
                         nicNo:"",
@@ -98,7 +99,7 @@ class EditLeave extends Component {
                         <a href="/emp/leave">View Leaves</a>
                     </div>
                 <br/>
-                <h2 className="h3 mb-3 font-weight-normal text-center">Edit Leave </h2>
+
 
                     <div className="row">
 
@@ -107,6 +108,7 @@ class EditLeave extends Component {
                         <div className="col-lg-6">
 
                             <div className="ui">
+                            <h2 className="h3 mb-3 font-weight-normal text-center">Edit Leave </h2>
 
                                 <form className="form-group" onSubmit={this.onSubmit}>
 
@@ -165,10 +167,9 @@ class EditLeave extends Component {
                                     onChange={this.handleInputChange} />
                                     </div>
 
-                                    <button type="submit" className="btn btn-success" style={{marginTop:'10px'}} >
-                                    <i className="far fa-check-square"></i>
-                                    &nbsp; update
-                                    </button>
+                                    <div className="button">
+                                    <input type="submit"  value="Update"/>   
+                                    </div>
                             
                                 </form>
 

@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const employeeSchema = new mongoose.Schema({
 
+    empid:{
+        type:String,
+        required:true
+    },
     firstname:{
         type:String,
         required:true

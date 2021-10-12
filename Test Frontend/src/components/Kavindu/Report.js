@@ -63,7 +63,8 @@ class Report extends Component {
           <table id="Report" className="table table-success table-striped" style={{marginTop:'40px'}} ref={(Component) => (this.componentRef = Component)}>
             <thead>
               <tr >
-                <th scope="col">#</th>   
+                <th scope="col">#</th>  
+                <th scope="col">Emp ID</th>  
                 <th scope="col">First Name</th> 
                 <th scope="col">Last Name</th> 
                 <th scope="col">Age</th>
@@ -81,7 +82,7 @@ class Report extends Component {
               {this.state.posts.map((posts,index) =>(
                 <tr key={index}>
                   <th scope="row">{index+1}</th>
-                  
+                  <td>{posts.empid}</td>
                   <td>{posts.firstname}</td>
                   <td>{posts.lastname}</td>
                   <td>{posts.age}</td>

@@ -33,7 +33,7 @@ class EmployeeDetails extends Component {
 
     render() {
 
-        const {firstname,lastname,age,nicNo,gender,dob,address,contactNo,jobTitle,joinedDate} = this.state.post;
+        const {empid,firstname,lastname,age,nicNo,gender,dob,address,contactNo,jobTitle,joinedDate} = this.state.post;
         return (
 
         <div className="container1">
@@ -49,6 +49,9 @@ class EmployeeDetails extends Component {
             <hr/>
                 <table class="table table-success table-striped">
                     <dl className="row">
+
+                         <dt className="col-sm-3 text-left">Emp ID</dt>
+                        <dd className="col-sm-9">{empid}</dd>
                         
                         <dt className="col-sm-3 text-left">First Name</dt>
                         <dd className="col-sm-9">{firstname}</dd>

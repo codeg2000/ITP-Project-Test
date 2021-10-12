@@ -3,6 +3,21 @@
   background-image: url("../Images/bg4.jpg");
 }
 
+form .button input{
+  height: 40px;
+  width: 100%;
+  outline: none;
+  color: #fff;
+  border:none;
+  font-size: 18px;
+  font-weight:500 ;
+  letter-spacing: 1px;
+  margin-top: 25px;
+  background:seagreen;
+  
+
+}
+
 /*NavBar */
 
 /* Add a black background color to the top navigation */
