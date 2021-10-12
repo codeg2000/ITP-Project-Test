@@ -17,6 +17,7 @@ const itemRouter = require('./routes/items');
 const DItemRouter = require('./routes/Ditems');
 const PayEmpRouter = require ("./routes/Payemployees.js");
 const routes = require("./routes/index");
+const memberRoutes = require('./routes/members.js');
 
 //app middleware
 app.use(bodyParser.json());
@@ -36,6 +37,8 @@ app.use('/sales', salesRouter);
 app.use('/items', DItemRouter);
 app.use("/payment" , PayEmpRouter);
 app.use("/", routes);
+app.use(memberRoutes);
+
 const PORT = 8000;
 const ATLAS_URL= 'mongodb+srv://gishanUser:celetron123@itpproject.pg20h.mongodb.net/stock_db?retryWrites=true&w=majority';
 

@@ -50,6 +50,7 @@ import EmpDetails from "./components/Lanka/EmpDetails";
 import Lhome from "./components/Lanka/Lhome";
 import LReport from "./components/Lanka/Lreport";
 import './style/Lstyle.css';
+
 import Login from "./components/Manula/Login.jsx";
 import DepartmentHome from "./components/Manula/home.jsx";
 import AddDepartment from "./components/Manula/AddDepartment.jsx";
@@ -57,6 +58,12 @@ import AllDepartment from "./components/Manula/AllDepartment";
 import EditDepartment from "./components/Manula/EditDepartment";
 import HomeView from "./components/Manula/HomeView";
 
+import CreateMember from './components/Hasara/CreateMember';
+import EditMember from './components/Hasara/EditMember';
+import MemberDetails from './components/Hasara/MemberDetails';
+import MemberHome from './components/Hasara/MHome';
+import MemberReport from './components/Hasara/MReport';
+import './style/Hstyle.css';
 
 
 class App extends Component {
@@ -119,6 +126,12 @@ class App extends Component {
           <Route path="/department/add_department" exact component={AddDepartment} />
           <Route path="/department/all_department" exact component={AllDepartment} />
           <Route path="/department/edit_department/:id" exact component={EditDepartment} />
+
+          <Route path="/member/" exact component={MemberHome}></Route>
+          <Route path="/member/add" component={CreateMember}></Route>
+          <Route path="/member/edit/:id" component={EditMember}></Route>
+          <Route path="/member/post/:id" component={MemberDetails}></Route>
+          <Route path="/member/report" component={MemberReport}></Route>
       </div>
       </BrowserRouter>
       </div>
