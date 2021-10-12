@@ -44,6 +44,7 @@ class EditCategory extends Component {
         axios.put(`http://localhost:8000/category/update/${id}`,data).then((res)=>{
             if(res.data.success){
                 alert("Category Updated successfully")
+                window.location.replace("/item/categories")
                 this.setState(
                     {
                         CategoryName:"",

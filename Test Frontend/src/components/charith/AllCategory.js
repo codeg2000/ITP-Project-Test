@@ -41,6 +41,34 @@ onDelete = (id) =>{
   })
 }
 
+filterData(posts,searchKey){
+
+  const result = posts.filter((post) =>
+  post.CategoryName.toLowerCase().includes(searchKey)||
+  post.CategoryName.toUpperCase().includes(searchKey)
+  
+
+  
+  )
+
+  this.setState({posts:result})
+
+}
+
+handleSearchArea = (e) =>{
+
+  const searchKey = e.currentTarget.value;
+
+  axios.get("http://localhost:8000/category").then(res =>{
+    if(res.data.success){
+     
+        this.filterData(res.data.existingCategory,searchKey)
+    }
+
+  });
+
+}
+
   render() {
     return (
       <div className="container1">
@@ -51,7 +79,7 @@ onDelete = (id) =>{
                     <a href="/item/categories">Categories</a>
                     <a href="/item/add_category">Add Category</a>
                 </div>
-        <div className= "search"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input></div>
+        <div className= "search"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={this.handleSearchArea}></input></div>
         <br/>
         <h2 className="topic"> Categories</h2>
         <br/>
@@ -59,7 +87,7 @@ onDelete = (id) =>{
         <table className="table table-success table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Cat_ID</th>
               <th scope="col">CategoryName</th>
               <th scope="col">Description</th>
               <th scope="col">Action</th>
@@ -69,7 +97,7 @@ onDelete = (id) =>{
           <tbody> 
             {this.state.posts.map((posts,index) =>(
               <tr key={index}>
-                <th scope="row">{index+1}</th>
+                <th scope="row">C_00{index+1}</th>
                 <td>
                     <a href={`/item/specific/${posts._id}`} style={{textDecoration:'none'}}>
                     {posts.CategoryName}
@@ -100,7 +128,7 @@ onDelete = (id) =>{
           </tbody>
         </table>
         
-        <button type="button" class="btn btn-primary">Generate Report</button>
+       
         
        
       </div>

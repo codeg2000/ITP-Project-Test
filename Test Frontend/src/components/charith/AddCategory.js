@@ -64,7 +64,7 @@ class AddCategory extends Component {
 
             <div className="form-group" style={{marginBottom:'15px'}}>
                 <label className="form-label" style={{marginBottom:'5px'}}> Category Name </label>
-                <input type="text" 
+                <input type="text" required minLength="2"
                 className="form-control"
                 name="CategoryName"
                 placeholder=""
@@ -74,7 +74,7 @@ class AddCategory extends Component {
 
             <div className="form-group" style={{marginBottom:'15px'}}>
                 <label className="form-label" style={{marginBottom:'5px'}}> Description </label>
-                <input type="text" 
+                <input type="text" required minLength="10" maxLength="100"
                 className="form-control"
                 name="Description"
                 placeholder=""

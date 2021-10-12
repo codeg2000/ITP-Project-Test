@@ -50,17 +50,8 @@ class EditItem extends Component {
         axios.put(`http://localhost:8000/item/update/${id}`,data).then((res)=>{
             if(res.data.success){
                 alert("Item Updated successfully")
-                this.setState(
-                    {
-                        ItemName:"",
-                        BrandName:"",
-                        Category:"",
-                        QualityAssurance:"",
-                        UnitPrice:"",
-                        UnitProfit:""
-                        
-                    }
-                )
+                window.location.replace("/item")
+                
             }
         })  
     }

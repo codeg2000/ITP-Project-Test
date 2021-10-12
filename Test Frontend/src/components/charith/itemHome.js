@@ -32,11 +32,15 @@ retrieveItems(){
 }
 
 onDelete = (id) =>{
+  // eslint-disable-next-line no-restricted-globals
+  if(confirm("Are you Sure you want to delete this item?")){
   axios.delete(`http://localhost:8000/item/delete/${id}`).then((res) =>{
     alert("Delete Successfully");
     this.retrieveItems();
   })
+  }
 }
+
 
 filterData(posts,searchKey){
 
@@ -85,7 +89,7 @@ handleSearchArea = (e) =>{
         <table className="table table-success table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Item_ID</th>
               <th scope="col">Item Name</th>
               <th scope="col">Brand Name</th>
               <th scope="col">Category</th>
@@ -98,7 +102,7 @@ handleSearchArea = (e) =>{
           <tbody> 
             {this.state.posts.map((posts,index) =>(
               <tr key={index}>
-                <th scope="row">{index+1}</th>
+                <th scope="row">I_00{index+1}</th>
                 <td>
                     <a href={`/item/post/${posts._id}`} style={{textDecoration:'none'}}>
                     {posts.ItemName}
