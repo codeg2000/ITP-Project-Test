@@ -50,6 +50,7 @@ class EditStock extends Component {
         axios.put(`http://localhost:8000/stock/update/${id}`,data).then((res)=>{
             if(res.data.success){
                 alert("Stock Updated successfully")
+                window.location.replace("/stocks")
                 this.setState(
                     {
                         Stock_ID :"",
@@ -73,7 +74,7 @@ class EditStock extends Component {
             if(res.data.success){
                 this.setState({
                     Stock_ID:res.data.stock.Stock_ID,
-                    Stock_Name:res.data.stock.StockName,
+                    Stock_Name:res.data.stock.Stock_Name,
                     Stock_Quantity:res.data.stock.Stock_Quantity,
                     Supplier_Name:res.data.stock.Supplier_Name,
                     Supplier_Email:res.data.stock.Supplier_Email,

@@ -62,7 +62,7 @@ class StockDetails extends Component {
             
          </dl>
             </div>
-            <a href="/">
+            <a href="/stocks">
             <button type="button" class="btn btn-primary">
             <i class="fas fa-arrow-alt-circle-left"></i>    
             &nbsp; Dashboard

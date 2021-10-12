@@ -104,7 +104,7 @@ class AddStock extends Component {
                 onChange={this.handleInputChange}
                 />
                 <Form.Control.Feedback type="invalid">
-Please provide  Stock IDs
+Please Enter Stock IDs
 </Form.Control.Feedback> 
               
             </div>
@@ -119,7 +119,7 @@ Please provide  Stock IDs
                 value={this.state.Stock_Name}
                 onChange={this.handleInputChange} />
                 <Form.Control.Feedback type="invalid">
-Please provide Stock Name
+Please Enter Stock Name
 </Form.Control.Feedback> 
             </div>
 
@@ -133,7 +133,7 @@ Please provide Stock Name
                 value={this.state.Stock_Quantity}
                 onChange={this.handleInputChange} />
                 <Form.Control.Feedback type="invalid">
-Please provide Stock Quantity
+Please Enter Stock Quantity
 </Form.Control.Feedback> 
             </div>
 
@@ -147,7 +147,7 @@ Please provide Stock Quantity
                 value={this.state.Supplier_Name}
                 onChange={this.handleInputChange} />
                 <Form.Control.Feedback type="invalid">
-Please provide  Supplier Name
+Please Enter Supplier Name
 </Form.Control.Feedback> 
             </div>
             
@@ -162,7 +162,7 @@ Please provide  Supplier Name
                 onChange={this.handleInputChange} 
                 />
                 <Form.Control.Feedback type="invalid">
-Please provide Supplier Email
+Please Enter Supplier Email
 </Form.Control.Feedback> 
                 
             </div>
@@ -178,7 +178,7 @@ Please provide Supplier Email
                 onChange={this.handleInputChange} 
                 />
                 <Form.Control.Feedback type="invalid">
-Please provideSupplier ContactNo
+Please Enter Supplier Contact No
 </Form.Control.Feedback> 
                
             </div>
